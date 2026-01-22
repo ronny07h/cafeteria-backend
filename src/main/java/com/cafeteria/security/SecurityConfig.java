@@ -41,6 +41,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/company-config/**").permitAll()
                 // Swagger UI
                 .requestMatchers("/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**", "/api-docs/**").permitAll()
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/reservations").permitAll()
                 // Admin endpoints - require authentication
                 .requestMatchers(HttpMethod.POST, "/api/products/**").authenticated()
