@@ -17,6 +17,7 @@ public class DataInitializer implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
     private final UserRepository userRepository;
+    private final org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
     
     @Override
     public void run(String... args) throws Exception {
@@ -24,7 +25,7 @@ public class DataInitializer implements CommandLineRunner {
         if (userRepository.findByUsername("admin").isEmpty()) {
             User admin = new User();
             admin.setUsername("admin");
-            admin.setPassword("admin");
+            admin.setPassword(passwordEncoder.encode("admin"));
             admin.setRole("ADMIN");
             userRepository.save(admin);
             System.out.println("✅ Admin user created (username: admin, password: admin)");
