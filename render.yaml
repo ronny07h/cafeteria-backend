@@ -15,10 +15,18 @@ services:
         fromDatabase:
           name: cafeteria-db
           property: password
-      - key: DB_URL
+      - key: DB_HOST
         fromDatabase:
           name: cafeteria-db
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: cafeteria-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: cafeteria-db
+          property: database
 
 databases:
   - name: cafeteria-db
