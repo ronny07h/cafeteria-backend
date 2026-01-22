@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: cafeteria-backend
+    env: docker
+    plan: free
+    region: oregon
+    buildCommand: docker build -t cafeteria-backend .
+    startCommand: docker run cafeteria-backend
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: DB_USERNAME
+        fromDatabase:
+          name: cafeteria-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: cafeteria-db
+          property: password
+      - key: DB_URL
+        fromDatabase:
+          name: cafeteria-db
+          property: connectionString
+
+databases:
+  - name: cafeteria-db
+    databaseName: cafeteriagr
+    user: cafeteria_user
+    plan: free
+    region: oregon

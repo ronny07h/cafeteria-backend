@@ -1,0 +1,15 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+*.class
+.mvn/timing.properties
+.classpath
+.project
+.settings/
+.springBeans
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+*.log
