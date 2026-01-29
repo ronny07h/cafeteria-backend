@@ -18,15 +18,19 @@ public class Product {
     private Long id;
     
     @Column(nullable = false)
+    @jakarta.validation.constraints.NotBlank(message = "El nombre es obligatorio")
     private String name;
     
     @Column(columnDefinition = "TEXT")
     private String description;
     
     @Column(nullable = false)
+    @jakarta.validation.constraints.NotNull(message = "El precio es obligatorio")
+    @jakarta.validation.constraints.Positive(message = "El precio debe ser mayor a 0")
     private Double price;
     
     @Column(columnDefinition = "TEXT")
+    @org.hibernate.validator.constraints.URL(message = "La URL de la imagen no es válida")
     private String imageUrl;
     
     @ManyToOne(fetch = FetchType.EAGER)

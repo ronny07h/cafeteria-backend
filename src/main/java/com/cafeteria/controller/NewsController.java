@@ -29,12 +29,12 @@ public class NewsController {
     }
 
     @PostMapping
-    public News createNews(@RequestBody News news) {
+    public News createNews(@jakarta.validation.Valid @RequestBody News news) {
         return newsService.saveNews(news);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<News> updateNews(@PathVariable Long id, @RequestBody News newsDetails) {
+    public ResponseEntity<News> updateNews(@PathVariable Long id, @jakarta.validation.Valid @RequestBody News newsDetails) {
         return newsService.getNewsById(id)
                 .map(news -> {
                     news.setTitle(newsDetails.getTitle());

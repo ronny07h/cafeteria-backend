@@ -13,11 +13,14 @@ public class News {
     private Long id;
 
     @Column(nullable = false)
+    @jakarta.validation.constraints.NotBlank(message = "El título es obligatorio")
     private String title;
 
     @Column(columnDefinition = "TEXT")
+    @jakarta.validation.constraints.NotBlank(message = "El contenido es obligatorio")
     private String content;
 
+    @org.hibernate.validator.constraints.URL(message = "La URL de la imagen no es válida")
     private String imageUrl;
 
     private LocalDateTime publicationDate;
